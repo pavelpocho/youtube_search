@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Video } from '../video';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-video-card',
@@ -11,13 +12,13 @@ export class VideoCardComponent implements OnInit {
 
   @Input() video: Video;
 
-  constructor() { }
+  constructor(private searchService: SearchService) { }
 
   ngOnInit() {
   }
 
   expandVideo() {
-    console.log(this.video);
+    this.searchService.openVideo(this.video);
   }
 
 }
