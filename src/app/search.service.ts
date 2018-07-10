@@ -13,6 +13,8 @@ export class SearchService {
 
   videos: Subject<Video[]> = new Subject<Video[]>();
 
+  fetching: Subject<boolean> = new Subject<boolean>();
+
   constructor(gapiService: GoogleApiService) { 
 
     gapiService.onLoad().subscribe(() => {
@@ -38,10 +40,12 @@ export class SearchService {
   }
 
   search(term: String): void {
+    this.fetching.next(true);
     const object = {
       part: "snippet",
       q: term,
-      type: "video"
+      type: "video",
+      maxResults:  50
     }
     var request = gapi.client.request({
       method: "GET",
@@ -49,7 +53,8 @@ export class SearchService {
       params: object
     })
     request.execute((response) => {
-      console.log("Response");
+      console.log("Got a response");
+      console.log(response);
       this.videos.next(response.items);
     })
   }

@@ -1,5 +1,14 @@
-<ul class="videoList">
-  <li *ngFor="let video of videos">
+<ul class="videoList" *ngIf="videos">
+  <li *ngFor="let video of displayVideos">
     <app-video-card [video]="video"></app-video-card>
   </li>
+  <div class="navigation">
+    <button class="pageSwitcher" (click)="switchPage(false)">
+      <i class="material-icons">arrow_back</i>
+    </button>
+    <p class="pageNumber">{{page + 1}} of {{10}}</p>
+    <button class="pageSwitcher" (click)="switchPage(true)">
+      <i class="material-icons">arrow_forward</i>
+    </button>
+  </div>
 </ul>

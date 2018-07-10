@@ -1,0 +1,21 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    height: 100%;
+    width: 100%;
+}
+.loadingWheel {
+    background-color: #808080;
+    border-radius: 12px;
+    height: 40px;
+    width: 40px;
+    margin: auto;
+    animation: spin 1.3s infinite;
+    grid-column: 1;
+    grid-row: 1;
+}
+@keyframes spin {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(720deg);}
+}

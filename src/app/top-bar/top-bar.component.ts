@@ -9,7 +9,7 @@ import { Video } from '../video';
 })
 export class TopBarComponent implements OnInit {
 
-  term: String;
+  term: String = "";
   videos: Video[];
 
   constructor(private searchService: SearchService) { }
@@ -18,6 +18,7 @@ export class TopBarComponent implements OnInit {
   }
 
   search() {
+    if (this.term == "") return;
     this.searchService.search(this.term);
   }
 

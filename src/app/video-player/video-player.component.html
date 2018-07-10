@@ -1,5 +1,15 @@
-<div class="videoPlayer">
+<div class="videoPlayer" *ngIf="videoId">
     <iframe id="player" type="text/html" width="640" height="390"
     [src]="sanitizer.bypassSecurityTrustResourceUrl(getUrl())"
     frameborder="0"></iframe>
+    <p class="title">{{video.snippet.title}}</p>
+    <p class="channelTitle">{{video.snippet.channelTitle}}</p>
+    <p class="publishedAt">{{videoDate}}</p>
+    <p class="description">{{video.snippet.description}}</p>
+</div>
+<div class="videoPlayerEmpty" *ngIf="emptyDisplay">
+    <div>
+        <p class="videoPlayerTitle">No video open :(</p>
+        <p class="videoPlayerText">Click a video in the list to open it.</p>
+    </div>
 </div>

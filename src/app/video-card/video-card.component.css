@@ -9,6 +9,7 @@
 }
 .video p {
     margin: 4px 0px;
+    text-align: left;
 }
 .video:hover {
     cursor: pointer;
@@ -20,18 +21,4 @@
     height: 100px;
     float: left;
     margin-right: 16px;
-}
-.title {
-    font-size: 18px;
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.channelTitle {
-    color: #404040;
-    font-size: 14px;
-}
-.publishedAt {
-    color: #606060;
-    font-size: 14px;
 }

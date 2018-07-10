@@ -1,0 +1,9 @@
+<div class="introScreen" *ngIf="display && !fetching">
+  <div>
+      <p class="introScreenTitle">Nothing's here yet :(</p>
+      <p class="introScreenText">Use the search bar on top to find videos.</p>
+  </div>
+</div>
+<div class="loading" *ngIf="fetching">
+  <app-loading-wheel></app-loading-wheel>
+</div>
