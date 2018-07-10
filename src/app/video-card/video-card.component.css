@@ -1,16 +1,37 @@
 .video {
-    width: 300px;
-    height: 320px;
     background-color: white;
     box-shadow: 0px 0px 10px -3px #909090;
     border-radius: 4px;
     margin: 8px;
     padding: 12px;
     transition: all .2s;
+    height: 100px;
+}
+.video p {
+    margin: 4px 0px;
 }
 .video:hover {
-    background-color: #fff1f1;
+    cursor: pointer;
+}
+.video:hover {
+    background-color: #f1f1f1;
 }
 .video img {
-    height: 200px;
+    height: 100px;
+    float: left;
+    margin-right: 16px;
+}
+.title {
+    font-size: 18px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.channelTitle {
+    color: #404040;
+    font-size: 14px;
+}
+.publishedAt {
+    color: #606060;
+    font-size: 14px;
 }

@@ -1,5 +1,6 @@
 <div class="video" (click)="expandVideo()">
-  <p>{{video.snippet.title}}</p>
-  <p>{{video.snippet.channelTitle}}</p>
-  <img [src]="video.snippet.thumbnails.high.url"/>
+  <img [src]="video.snippet.thumbnails.high.url" class="thumbnail"/>
+  <p class="title">{{video.snippet.title}}</p>
+  <p class="channelTitle">{{video.snippet.channelTitle}}</p>
+  <p class="publishedAt">{{video.snippet.publishedAt}}</p>
 </div>
