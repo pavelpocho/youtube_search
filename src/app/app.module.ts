@@ -15,6 +15,8 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { VideoListComponent } from './video-list/video-list.component';
 import { VideoCardComponent } from './video-card/video-card.component';
 import { VideoPlayerComponent } from './video-player/video-player.component';
+import { IntroScreenComponent } from './intro-screen/intro-screen.component';
+import { LoadingWheelComponent } from './loading-wheel/loading-wheel.component';
 
 let gapiClientConfig: NgGapiClientConfig = {
   client_id: "498408591122-91p3073ucantaqmg981lkl0p1o3dhedn.apps.googleusercontent.com",
@@ -30,7 +32,9 @@ let gapiClientConfig: NgGapiClientConfig = {
     TopBarComponent,
     VideoListComponent,
     VideoCardComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
+    IntroScreenComponent,
+    LoadingWheelComponent
   ],
   imports: [
     BrowserModule,
