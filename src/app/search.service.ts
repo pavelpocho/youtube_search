@@ -9,6 +9,8 @@ import { Subject } from 'rxjs/Subject';
 })
 export class SearchService {
 
+  watching: Subject<Video> = new Subject<Video>();
+
   videos: Subject<Video[]> = new Subject<Video[]>();
 
   constructor(gapiService: GoogleApiService) { 
@@ -29,6 +31,10 @@ export class SearchService {
       })
       
     });
+  }
+
+  openVideo(video: Video) {
+    this.watching.next(video);
   }
 
   search(term: String): void {
