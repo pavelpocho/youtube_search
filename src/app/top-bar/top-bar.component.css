@@ -4,9 +4,9 @@
     padding: 12px;
     display: flex;
     justify-content: center;
-    z-index: 4;
-    position: fixed;
-    width: 100%;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
 }
 .searchBox {
     height: 36px;
