@@ -14,6 +14,7 @@ export class VideoPlayerComponent implements OnInit {
   video: Video;
   videoDate: String;
   emptyDisplay: boolean = false;
+  videoUrl: SafeResourceUrl;
 
   url = ["http://www.youtube.com/embed/", "?enablejsapi=1&origin=http://localhost:4200"];
 
@@ -32,7 +33,14 @@ export class VideoPlayerComponent implements OnInit {
       this.video = video;
       this.videoDate = new Date(this.video.snippet.publishedAt).toLocaleString().split(",")[0];
       this.cd.detectChanges();
+      this.setUrl();
     });
+  }
+
+  setUrl() {
+    if (this.videoUrl !== this.sanitizer.bypassSecurityTrustResourceUrl(this.getUrl())) {
+      this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.getUrl())
+    }
   }
 
   getUrl() {

@@ -1,6 +1,6 @@
 <div class="videoPlayer" *ngIf="videoId">
     <iframe id="player" type="text/html" width="640" height="390"
-    [src]="sanitizer.bypassSecurityTrustResourceUrl(getUrl())"
+    [src]="videoUrl"
     frameborder="0"></iframe>
     <p class="title">{{video.snippet.title}}</p>
     <p class="channelTitle">{{video.snippet.channelTitle}}</p>
