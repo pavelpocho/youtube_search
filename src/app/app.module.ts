@@ -17,6 +17,9 @@ import { VideoCardComponent } from './video-card/video-card.component';
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { IntroScreenComponent } from './intro-screen/intro-screen.component';
 import { LoadingWheelComponent } from './loading-wheel/loading-wheel.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { MainContainerComponent } from './main-container/main-container.component';
+import { LoginContainerComponent } from './login-container/login-container.component';
 
 let gapiClientConfig: NgGapiClientConfig = {
   client_id: "498408591122-91p3073ucantaqmg981lkl0p1o3dhedn.apps.googleusercontent.com",
@@ -34,7 +37,9 @@ let gapiClientConfig: NgGapiClientConfig = {
     VideoCardComponent,
     VideoPlayerComponent,
     IntroScreenComponent,
-    LoadingWheelComponent
+    LoadingWheelComponent,
+    MainContainerComponent,
+    LoginContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,8 @@ let gapiClientConfig: NgGapiClientConfig = {
     GoogleApiModule.forRoot({
       provide: NG_GAPI_CONFIG,
       useValue: gapiClientConfig
-    })
+    }),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

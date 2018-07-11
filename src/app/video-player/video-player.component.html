@@ -6,6 +6,12 @@
     <p class="channelTitle">{{video.snippet.channelTitle}}</p>
     <p class="publishedAt">{{videoDate}}</p>
     <p class="description">{{video.snippet.description}}</p>
+    <button [class]="likedClass" id="likeVideo" (click)="like()" *ngIf="user">
+        <i class="material-icons">thumb_up</i>
+    </button>
+    <button [class]="dislikedClass" id="dislikeVideo" (click)="dislike()" *ngIf="user">
+        <i class="material-icons">thumb_down</i>
+    </button>
 </div>
 <div class="videoPlayerEmpty" *ngIf="emptyDisplay">
     <div>

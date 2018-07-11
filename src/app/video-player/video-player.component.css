@@ -33,3 +33,25 @@
     font-size: 20px;
     color: #909090;
 }
+.selected {
+    background-color: red;
+}
+#likeVideo, #dislikeVideo {
+    border: none;
+    border-radius: 100%;
+    background-color: transparent;
+    height: 36px;
+    width: 36px;
+    padding: 6px;
+    transition: all .2s;
+    outline: none;
+}
+#likeVideo i, #dislikeVideo i {
+    color: #707070;
+}
+.selected i {
+    color: #aa1111 !important;
+}
+#likeVideo:hover, #dislikeVideo:hover {
+    background-color: #e9e9e9 !important;
+}

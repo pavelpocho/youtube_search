@@ -10,6 +10,7 @@ import { Subject } from 'rxjs/Subject';
 export class SearchService {
 
   watching: Subject<Video> = new Subject<Video>();
+  rating: Subject<String> = new Subject<String>();
 
   videos: Subject<Video[]> = new Subject<Video[]>();
 
@@ -18,7 +19,6 @@ export class SearchService {
   constructor(gapiService: GoogleApiService) { 
 
     gapiService.onLoad().subscribe(() => {
-      console.log("loaded");
       gapi.load("client", () => {
         gapi.client.init({
           apiKey: "AIzaSyCDV1nuEavaPIkTknujbzAZAN8oUiWdArg",
@@ -26,17 +26,29 @@ export class SearchService {
           discoveryDocs: [
             "https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest"
           ],
-          scope: "https://www.googleapis.com/auth/youtube.readonly"
+          scope: "https://www.googleapis.com/auth/youtube.readonly email"
         }).then(() => {
           console.log("loaded");
         })
       })
-      
     });
   }
 
   openVideo(video: Video) {
     this.watching.next(video);
+    const object = {
+      id: video.id.videoId
+    }
+    var request = gapi.client.request({
+      method: "GET",
+      path: "youtube/v3/videos/getRating",
+      params: object
+    })
+    request.execute((response) => {
+      console.log("Got a response");
+      console.log(response);
+      this.rating.next(response.items[0].rating);
+    })
   }
 
   search(term: String): void {
@@ -57,5 +69,58 @@ export class SearchService {
       console.log(response);
       this.videos.next(response.items);
     })
+  }
+
+  rateVideo(video: Video, rating: Number) {
+
+    if (!gapi.auth2.getAuthInstance().currentUser.get().hasGrantedScopes("https://www.googleapis.com/auth/youtube")) return;
+
+    const object = {
+      id: video.id.videoId,
+      rating: rating === 1 ? "like" : rating === 0 ? "none" : rating === -1 ? "dislike" : null
+    }
+    if (object.rating == null) throw new DOMException("Invalid rating");
+
+    var request = gapi.client.request({
+      method: "POST",
+      path: "youtube/v3/videos/rate",
+      params: object
+    })
+    request.execute((response) => {
+      console.log("Got a response");
+      console.log(response);
+    })
+
+  }
+
+  getSubscriptions() {
+
+    try {
+      if (gapi) {
+
+      }
+    } catch {
+      return;
+    }
+
+    if (!gapi.auth2.getAuthInstance().currentUser.get().hasGrantedScopes("https://www.googleapis.com/auth/youtube")) return;
+
+    return;
+
+    /*this.fetching.next(true);
+    const object = {
+      part: "snippet",
+      mine: "true"
+    }
+    var request = gapi.client.request({
+      method: "GET",
+      path: "youtube/v3/subscriptions",
+      params: object
+    })
+    request.execute((response) => {
+      console.log("Got a response");
+      console.log(response);
+      this.videos.next(response.items);
+    })*/
   }
 }
