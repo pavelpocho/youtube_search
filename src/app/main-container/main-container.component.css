@@ -1,0 +1,29 @@
+.app {
+    transition: all .2s;
+    display: grid;
+    grid-template-rows: 62px auto;
+    grid-template-columns: 400px auto;
+    height: 100vh;
+}
+.introScreenWrap {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+    z-index: -1;
+}
+.topBarWrap {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    z-index: 3;
+}
+.videoListWrap {
+    grid-column: 1;
+    grid-row: 2;
+    margin: 0px auto;
+    height: 100%;
+}
+.videoPlayerWrap {
+    grid-column: 2;
+    grid-row: 2;
+    width: 100%;
+    height: 100%;
+}

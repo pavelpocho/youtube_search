@@ -33,3 +33,6 @@
     font-size: 20px;
     color: #909090;
 }
+.selected {
+    background-color: red;
+}

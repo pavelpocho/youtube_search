@@ -9,7 +9,9 @@ export class OpenVideoService {
 
   watching = new Subject<Video>();
 
-  openVideo(video): void {
+  rating = new Subject<Video>();
+
+  openVideo(video: Video): void {
     this.watching.next(video);
   }
 

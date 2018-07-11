@@ -6,6 +6,8 @@
     <p class="channelTitle">{{video.snippet.channelTitle}}</p>
     <p class="publishedAt">{{videoDate}}</p>
     <p class="description">{{video.snippet.description}}</p>
+    <button [class]="likedClass" (click)="like()" *ngIf="user">Like</button>
+    <button [class]="dislikedClass" (click)="dislike()" *ngIf="user">Dislike</button>
 </div>
 <div class="videoPlayerEmpty" *ngIf="emptyDisplay">
     <div>
